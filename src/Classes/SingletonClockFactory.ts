@@ -37,7 +37,8 @@ class Clock implements IClock{
         this.start()
     }
 
-    public start() {
+    // make sure 'this' is bound statically
+    public start = () => {
         console.log(`Clock ${this.id} starting`)
         this._timer = setInterval(() => {
             this._tick();
@@ -45,12 +46,13 @@ class Clock implements IClock{
         
     }
 
+
     private _tick() {
         // this.time++;
         this._notifyAll();
         }
 
-    public stop() {
+    public stop = () => {
         console.log(`Clock ${this.id} stopping`)
          // console.log('Clock stopped, this._interval', this._interval)
         clearInterval(this._timer);

@@ -36,26 +36,15 @@ export default function ClockDisplay(props: {
     };
   }, [props.clock, props.name]);
 
-  // if you put {clock.stop} in the call to Button,
-  // it doesn't work. Somehow or other, it gets the wrong value of 'this'.
-  function handleStop() {
-    clock.stop();
-  }
-
-  function handleStart() {
-    clock.start();
-  }
-
   return (
     <HStack>
       <Box>Clock: {props.name}</Box>
-      <Box>Clock ID: {clock.id} </Box>
       <Box>Time = {localTime}</Box>
       <Box>nlisteners = {clock.nListeners}</Box>
-      <Button aria-label={"start"} onClick={handleStart}>
+      <Button aria-label={"start"} onClick={clock.start}>
         Start
       </Button>
-      <Button aria-label={"stop"} onClick={handleStop}>
+      <Button aria-label={"stop"} onClick={clock.stop}>
         Stop
       </Button>
       <IconButton

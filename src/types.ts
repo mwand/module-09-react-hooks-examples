@@ -4,5 +4,5 @@ export interface IClock {
     start(): void
     stop(): void
     nListeners: number
-    id : string
+//    id : string
 }
