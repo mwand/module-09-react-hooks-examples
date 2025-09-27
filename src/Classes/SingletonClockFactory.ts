@@ -1,13 +1,13 @@
 import { IClock } from "../types"
-import { nanoid } from 'nanoid'
 
 /** Clock With Listeners (delegates)
  * This is a singleton class that creates a clock that ticks at a regular interval.
+ * It does *NOT* keep track of the time.
  * It has a list of listeners that it notifies on each tick.
  */
 
 
-
+// the listener does not expect an argument
 type Listener = () => void
 
 
@@ -28,36 +28,29 @@ class Clock implements IClock{
 
     private _timer : NodeJS.Timeout 
     private _interval : number
-    public id : string  
 
     public constructor(interval: number) {
-        this.id = nanoid(4)
+
         this._interval = interval
-        console.log(`Clock ${this.id} created; interval = ${this._interval}`)
         this.start()
     }
 
     // make sure 'this' is bound statically
     public start = () => {
-        console.log(`Clock ${this.id} starting`)
         this._timer = setInterval(() => {
             this._tick();
-        }, this._interval);
-        
+        }, this._interval);        
     }
 
+    public stop = () => {
+        clearInterval(this._timer);
+    }
 
     private _tick() {
-        // this.time++;
         this._notifyAll();
         }
 
-    public stop = () => {
-        console.log(`Clock ${this.id} stopping`)
-         // console.log('Clock stopped, this._interval', this._interval)
-        clearInterval(this._timer);
-        
-    }
+    
     
 }
 
