@@ -14,7 +14,8 @@ import { ChakraProvider} from '@chakra-ui/react';
 // change ./Apps to ../Apps/<appname>/App
 // import App from '../Apps/ThreeClocks/App'
 // import App from '../Apps/useEffect-demo'
-import App from '../Apps/useEffect-demoWithCleanUps'
+// import App from '../Apps/useEffect-demoWithCleanUps'
+import App from '../Apps/ArrayOfClocks/App'
 
 export default function Root() {
     return (
